@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contexte Historique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="contexte-economique.css">
+</head>
+<body>
+
+  <div class="tape" aria-hidden="true">
+    <div class="tape__track" id="tapeTrack">
+      <span class="tape__item">CHARGEMENT DU FLUX…</span>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <a class="masthead__back" href="index.html">← Accueil</a>
+    <h1 class="masthead__title">Contexte Historique</h1>
+    <p class="masthead__sub">Reconstituez l'environnement macro, la volatilité et l'actualité d'une journée passée pour vos backtests.</p>
+  </header>
+
+  <main class="wrap">
+
+    <form class="lookup" id="lookupForm">
+      <label class="lookup__label" for="dateInput">Date à consulter</label>
+      <div class="lookup__row">
+        <input class="lookup__input" type="date" id="dateInput" required>
+        <button class="lookup__btn" type="submit">Consulter</button>
+      </div>
+      <p class="lookup__hint" id="lookupHint"></p>
+    </form>
+
+    <section class="panels" id="panels" hidden>
+
+      <article class="panel panel--macro">
+        <header class="panel__head">
+          <span class="panel__eyebrow">01 — Macro</span>
+          <h2 class="panel__title">Conditions économiques</h2>
+        </header>
+        <dl class="stat-list" id="macroList"></dl>
+      </article>
+
+      <article class="panel panel--sentiment">
+        <header class="panel__head">
+          <span class="panel__eyebrow">02 — Sentiment</span>
+          <h2 class="panel__title">Volatilité de marché</h2>
+        </header>
+        <dl class="stat-list" id="sentimentList"></dl>
+      </article>
+
+      <article class="panel panel--news">
+        <header class="panel__head">
+          <span class="panel__eyebrow">03 — Actualité</span>
+          <h2 class="panel__title">Événements marquants</h2>
+        </header>
+        <ul class="news-list" id="newsList"></ul>
+      </article>
+
+    </section>
+
+    <p class="status" id="status" role="status"></p>
+
+  </main>
+
+  <footer class="foot">
+    <p>Sources : Federal Reserve (FRED) · GDELT Project. Données fournies à titre indicatif pour le backtesting, à vérifier avant toute décision réelle.</p>
+  </footer>
+
+  <script src="contexte-economique.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Or & Crypto — Contexte macro du backtest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="marches.css">
+</head>
+<body>
+
+  <header class="masthead">
+    <a class="masthead__back" href="contexte-economique.html">Contexte macro général →</a>
+    <h1 class="masthead__title">Or & Crypto</h1>
+    <p class="masthead__sub">Reconstitution du contexte macro connu à une date donnée, pour du backtesting réaliste.</p>
+  </header>
+
+  <div class="datebar">
+    <div class="datebar__inner">
+      <div class="datebar__field">
+        <label for="dateInput">Date du backtest</label>
+        <input type="date" id="dateInput">
+      </div>
+      <button class="datebar__btn" id="loadBtn" type="button">Charger le contexte</button>
+      <p class="datebar__meta" id="asOfMeta"></p>
+    </div>
+  </div>
+
+  <main class="wrap">
+
+    <div class="error-banner" id="errorBanner" hidden></div>
+
+    <p class="lookahead-note">
+      ⓘ Les valeurs affichées correspondent aux données <strong>telles qu'elles étaient connues à la date sélectionnée</strong>
+      (vintage FRED "realtime"), pas aux chiffres révisés depuis. Aucune actualité postérieure à cette date n'est affichée.
+    </p>
+
+    <section class="regime" id="regimeSection" aria-live="polite">
+      <div class="regime__score" id="regimeScore">
+        <span class="regime__badge status-neutral" id="regimeBadge">—</span>
+        <p class="regime__caveat">Lecture heuristique et pédagogique des indicateurs ci-dessous — ce n'est pas un conseil d'investissement.</p>
+      </div>
+      <ul class="regime__factors" id="regimeFactors"></ul>
+    </section>
+
+    <section class="block">
+      <h2 class="block__title">Taux & liquidité</h2>
+      <div class="cards" id="ratesCards"></div>
+    </section>
+
+    <section class="block">
+      <h2 class="block__title">Inflation & croissance</h2>
+      <div class="cards" id="inflationCards"></div>
+    </section>
+
+    <section class="block">
+      <h2 class="block__title">Marchés transversaux</h2>
+      <div class="cards" id="crossCards"></div>
+    </section>
+
+    <section class="block block--asset">
+      <h2 class="block__title">Or (XAU)</h2>
+      <div class="cards" id="goldCards"></div>
+      <div class="synthesis" id="goldSynthesis"></div>
+      <div class="asset-news">
+        <h3 class="asset-news__title">Actualité or (à la date sélectionnée)</h3>
+        <ul class="news-list" id="goldNewsList"></ul>
+      </div>
+    </section>
+
+    <section class="block block--asset">
+      <h2 class="block__title">Crypto — BTC · ETH · SOL</h2>
+      <div class="crypto-grid" id="cryptoGrid"></div>
+    </section>
+
+    <section class="block">
+      <div class="block__head-row">
+        <h2 class="block__title">Calendrier économique (± 3 semaines)</h2>
+        <div class="filters" id="calendarFilters">
+          <button class="filters__chip is-active" data-filter="all">Tout</button>
+          <button class="filters__chip" data-filter="us">États-Unis</button>
+          <button class="filters__chip" data-filter="crypto">Crypto</button>
+          <button class="filters__chip" data-filter="europe">Europe</button>
+        </div>
+      </div>
+      <ul class="calendar-list" id="calendarList"></ul>
+    </section>
+
+    <p class="status" id="status" role="status"></p>
+
+  </main>
+
+  <footer class="foot">
+    <p>Sources : Federal Reserve Economic Data (FRED, incl. vintages ALFRED) · GDELT Project · CoinGecko.
+    Contenu informatif pour le backtesting, à vérifier avant toute décision réelle.</p>
+  </footer>
+
+  <script src="marches.js"></script>
+</body>
+</html>
